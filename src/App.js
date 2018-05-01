@@ -76,6 +76,11 @@ class App extends Component {
             <p className="lead-sentence">
               Find the latest weather conditions in your city
             </p>
+            <p className="instructions">
+              1. Enter the city name <br/>
+              2. Enter the country acronym e.g. US <br/>
+              3. Click "Get weather"
+            </p>
           </div>
 
           <SearchBar

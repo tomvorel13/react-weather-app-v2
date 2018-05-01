@@ -28,9 +28,13 @@ h1 {
 }
 
 .lead-sentence {
-  font-style: italic;
   font-weight: 300;
   font-size: 1.2em;
+}
+
+.instructions {
+  font-style: italic;
+  font-weight: 300;
 }
 
 /* MEDIA QUERIES */
@@ -56,7 +60,9 @@ h1 {
     text-align: center;
   }
 
-  .lead-sentence {
+  .lead-sentence, .instructions {
     text-align: center;
   }
+
+ 
 }

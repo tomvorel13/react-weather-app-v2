@@ -7,7 +7,7 @@ const WeatherInfo = props => {
   return (
     <div className="weather-wrapper">
       {props.city && (
-        <p className="weather-par">
+        <p className="weather-par animated slideInRight">
           <span className="icon">
             <i className="far fa-building" />
           </span>{" "}
@@ -15,7 +15,7 @@ const WeatherInfo = props => {
         </p>
       )}
       {props.country && (
-        <p className="weather-par">
+        <p className="weather-par animated slideInRight">
           <span className="icon">
             <i className="fas fa-globe" />
           </span>{" "}
@@ -23,7 +23,7 @@ const WeatherInfo = props => {
         </p>
       )}
       {props.temp && (
-        <p className="weather-par">
+        <p className="weather-par animated slideInRight">
           <span className="icon">
             <i class="fas fa-thermometer-half" />
           </span>{" "}
@@ -31,7 +31,7 @@ const WeatherInfo = props => {
         </p>
       )}
       {props.desc && (
-        <p className="weather-par">
+        <p className="weather-par animated slideInRight">
           <span className="icon">
             <i class="fas fa-comment" />
           </span>{" "}
@@ -39,7 +39,7 @@ const WeatherInfo = props => {
         </p>
       )}
       {props.pressure && (
-        <p className="weather-par">
+        <p className="weather-par animated slideInRight">
           <span className="icon">
             <i class="fas fa-tachometer-alt" />
           </span>{" "}
@@ -47,7 +47,7 @@ const WeatherInfo = props => {
         </p>
       )}
       {props.error && (
-        <h2 className="weather-error">
+        <h2 className="weather-error animated slideInRight">
           <span className="icon">
             <i class="fas fa-exclamation-triangle" />
           </span>{" "}

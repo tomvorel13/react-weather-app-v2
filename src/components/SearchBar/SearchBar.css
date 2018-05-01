@@ -36,8 +36,8 @@
   width: 92%;
   background: transparent;
   border: none;
-  color: transparent;
-  text-shadow: 0 0 0 #21262b;
+  color: black;
+  text-shadow: 0;
   border-bottom: 2px solid transparent;
 }
 
@@ -49,6 +49,19 @@
   color: #21262b;
   opacity: 1;
 }
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input:focus:-moz-placeholder {
+  color: transparent;
+} /* FF 4-18 */
+input:focus::-moz-placeholder {
+  color: transparent;
+} /* FF 19+ */
+input:focus:-ms-input-placeholder {
+  color: transparent;
+} /* IE 10+ */
 
 /* Hover buttons */
 .btn-effect {
@@ -84,30 +97,39 @@
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.btn-effect:hover, .btn-effect:focus, .btn-effect:active {
+.btn-effect:hover,
+.btn-effect:focus,
+.btn-effect:active {
   color: white;
 }
-.btn-effect:hover:before, .btn-effect:focus:before, .btn-effect:active:before {
+.btn-effect:hover:before,
+.btn-effect:focus:before,
+.btn-effect:active:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 }
 
+/* Removing the dotted line in firefox */
+button::-moz-focus-inner {
+  border: 0;
+}
+
 .icon {
-    display: inline-block;
-    margin-bottom: 7px;
+  display: inline-block;
+  margin-bottom: 7px;
 }
 
 .input-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 /* MEDIA QUERIES  */
 
 @media screen and (max-width: 830px) {
-    .form-wrapper {
-        margin: 0 auto;
-    }
+  .form-wrapper {
+    margin: 0 auto;
+  }
 }
