@@ -1,61 +1,93 @@
-import React from "react";
-
-//Styles
-import "./WeatherInfo.css";
+import React from 'react';
+import styled from 'styled-components';
 
 const WeatherInfo = props => {
   return (
-    <div className="weather-wrapper">
+    <WeatherWrapper>
       {props.city && (
-        <p className="weather-par animated slideInRight">
-          <span className="icon">
+        <WeatherInfoText className="animated slideInRight">
+          <Icon>
             <i className="far fa-building" />
-          </span>{" "}
+          </Icon>{' '}
           {props.city}
-        </p>
+        </WeatherInfoText>
       )}
       {props.country && (
-        <p className="weather-par animated slideInRight">
-          <span className="icon">
+        <WeatherInfoText className="animated slideInRight">
+          <Icon>
             <i className="fas fa-globe" />
-          </span>{" "}
+          </Icon>{' '}
           {props.country}
-        </p>
+        </WeatherInfoText>
       )}
       {props.temp && (
-        <p className="weather-par animated slideInRight">
-          <span className="icon">
-            <i class="fas fa-thermometer-half" />
-          </span>{" "}
+        <WeatherInfoText className="animated slideInRight">
+          <Icon>
+            <i className="fas fa-thermometer-half" />
+          </Icon>{' '}
           {Math.round(props.temp)} °C
-        </p>
+        </WeatherInfoText>
       )}
       {props.desc && (
-        <p className="weather-par animated slideInRight">
-          <span className="icon">
-            <i class="fas fa-comment" />
-          </span>{" "}
+        <WeatherInfoText className="animated slideInRight">
+          <Icon>
+            <i className="fas fa-comment" />
+          </Icon>{' '}
           {props.desc}
-        </p>
+        </WeatherInfoText>
       )}
       {props.pressure && (
-        <p className="weather-par animated slideInRight">
-          <span className="icon">
-            <i class="fas fa-tachometer-alt" />
-          </span>{" "}
+        <WeatherInfoText className="animated slideInRight">
+          <Icon>
+            <i className="fas fa-tachometer-alt" />
+          </Icon>{' '}
           {props.pressure} hPa
-        </p>
+        </WeatherInfoText>
       )}
       {props.error && (
-        <h2 className="weather-error animated slideInRight">
-          <span className="icon">
-            <i class="fas fa-exclamation-triangle" />
-          </span>{" "}
+        <WeatherError className="animated slideInRight">
+          <Icon>
+            <i className="fas fa-exclamation-triangle" />
+          </Icon>{' '}
           {props.error}
-        </h2>
+        </WeatherError>
       )}
-    </div>
+    </WeatherWrapper>
   );
 };
 
 export default WeatherInfo;
+
+// STYLES
+
+const WeatherWrapper = styled.div`
+  padding: 0 3em;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 830px) {
+    margin-left: 1em;
+  }
+`;
+
+const WeatherInfoText = styled.p`
+  font-size: 1.6em;
+  font-weight: 300;
+  text-align: left;
+  margin-bottom: 0;
+
+  &:last-of-type {
+    padding-bottom: 2em;
+  }
+`;
+
+const WeatherError = styled.h2`
+  font-size: 2em;
+  font-weight: 300;
+  text-align: center;
+  padding: 1em 0;
+`;
+
+const Icon = styled.span`
+  width: 30px;
+`;

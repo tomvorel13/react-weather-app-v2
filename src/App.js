@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 //Component imports
-import SearchBar from "./components/SearchBar/SearchBar";
-import WeatherInfo from "./components/WeatherInfo/WeatherInfo";
+import SearchBar from './components/SearchBar/SearchBar';
+import WeatherInfo from './components/WeatherInfo/WeatherInfo';
 
-const API_KEY = "c5c58670c32db956ece142ae13d1759f";
+const API_KEY = 'c5c58670c32db956ece142ae13d1759f';
 
 class App extends Component {
   state = {
@@ -30,14 +30,14 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        if (data.cod === "404") {
+        if (data.cod === '404') {
           this.setState({
             city: undefined,
             country: undefined,
             temp: undefined,
             desc: undefined,
             pressure: undefined,
-            error: "City not found"
+            error: 'City not found'
           });
         } else {
           this.setState({
@@ -51,7 +51,7 @@ class App extends Component {
         }
       });
 
-    document.getElementById("myForm").reset();
+    document.getElementById('myForm').reset();
   };
 
   clearData = e => {
@@ -64,30 +64,30 @@ class App extends Component {
       error: undefined
     });
 
-    document.getElementById("myForm").reset();
+    document.getElementById('myForm').reset();
   };
 
   render() {
     return (
-      <div className="wrapper">
-        <div className="flex-container">
-          <div className="heading-wrapper">
-            <h1>WeatherAPP 2.0</h1>
-            <p className="lead-sentence">
+      <Wrapper>
+        <FlexContainer>
+          <HeadingWrapper>
+            <MainHeading>WeatherAPP 2.0</MainHeading>
+            <LeadSentence>
               Find the latest weather conditions in your city
-            </p>
-            <p className="instructions">
-              1. Enter the city name <br/>
-              2. Enter the country acronym e.g. US <br/>
+            </LeadSentence>
+            <Instructions>
+              1. Enter the city name <br />
+              2. Enter the country acronym e.g. US <br />
               3. Click "Get weather"
-            </p>
-          </div>
+            </Instructions>
+          </HeadingWrapper>
 
           <SearchBar
             fetchWeather={this.fetchWeather}
             clearData={this.clearData}
           />
-        </div>
+        </FlexContainer>
 
         <WeatherInfo
           city={this.state.city}
@@ -97,9 +97,78 @@ class App extends Component {
           pressure={this.state.pressure}
           error={this.state.error}
         />
-      </div>
+      </Wrapper>
     );
   }
 }
 
 export default App;
+
+// STYLES
+
+const Wrapper = styled.div`
+  max-width: 880px;
+  margin: 5em auto 0 auto;
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif;
+  color: black;
+  box-shadow: 6px 4px 20px 0px rgba(189, 189, 189, 1);
+
+  @media screen and (max-width: 830px) {
+    margin-top: 0;
+  }
+`;
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 830px) {
+    flex-direction: column;
+  }
+`;
+
+const HeadingWrapper = styled.div`
+  -webkit-clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+  background-color: #21262b;
+  width: 50%;
+  padding: 1em 3em;
+  color: white;
+
+  @media screen and (max-width: 830px) {
+    -webkit-clip-path: none;
+    clip-path: none;
+    width: 90%;
+    padding: 2em 1em;
+  }
+`;
+
+const MainHeading = styled.h1`
+  font-size: 3em;
+  font-weight: 300;
+  margin-top: 0;
+
+  @media screen and (max-width: 830px) {
+    font-size: 2em;
+    text-align: center;
+  }
+`;
+
+const LeadSentence = styled.p`
+  font-weight: 300;
+  font-size: 1.2em;
+
+  @media screen and (max-width: 830px) {
+    text-align: center;
+  }
+`;
+
+const Instructions = styled.p`
+  font-style: italic;
+  font-weight: 300;
+
+  @media screen and (max-width: 830px) {
+    text-align: center;
+  }
+`;
